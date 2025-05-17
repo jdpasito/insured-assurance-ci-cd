@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -25,5 +24,6 @@ jobs:
       run: mvn clean install
 
     - name: Trigger Jenkins deployment
-      run: curl -X POST https://52fb-2405-201-4062-702c-80e6-cabb-3fae-846b.ngrok-free.app/job/insured-assurance-deploy/build?token=deploy123
-
+      run: |
+        curl -X POST "https://52fb-2405-201-4062-702c-80e6-cabb-3fae-846b.ngrok-free.app/job/insured-assurance-deploy/build" \
+          --user jaideep123:${{ secrets.JENKINS_API_TOKEN }}
